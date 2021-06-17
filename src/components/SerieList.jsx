@@ -16,14 +16,14 @@ const SerieList = () => {
     getSeries();
   }, []);
 
-  let listOfSeries = series.map((serie) => {
+  let serie = series.map((serie) => {
     return (
       <div>
         <img key={serie.id} src={serie.content.images.boxart.url} alt="series-list" />
       </div>
     );
   });
-  return <div data-cy="series-container">{listOfSeries}</div>;
+  return <div data-cy="series-container">{serie}</div>;
 };
 
 export default SerieList;
