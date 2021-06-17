@@ -18,7 +18,7 @@ const SerieList = () => {
     })
   return (
     <div data-cy='series-container'>
-      {series}
+      {listOfSeries}
     </div>
   )
 }
