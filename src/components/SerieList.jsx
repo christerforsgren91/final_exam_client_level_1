@@ -5,11 +5,13 @@ const SerieList = () => {
   const { series, setSeries } = useState([]);
 
   const getSeries = async () => {
-    debugger;
     let response = await axios.get(
       'https://content.viaplay.se/pc-se/serier/samtliga'
+      );
+      debugger;
+    setSeries(
+      response.data._embedded['viaplay:blocks'][0]._embedded['viaplay:products']
     );
-    setSeries(response.data._embedded['viaplay:blocks'][0]._embedded['viaplay:products']);
   };
 
   useEffect(() => {
@@ -18,8 +20,12 @@ const SerieList = () => {
 
   let serie = series.map((serie) => {
     return (
-      <div>
-        <img key={serie.id} src={serie.content.images.boxart.url} alt="series-list" />
+      <div data-cy="series-card">
+        <img
+          key={serie.id}
+          src={serie.content.images.boxart.url}
+          alt="series-list"
+        />
       </div>
     );
   });
